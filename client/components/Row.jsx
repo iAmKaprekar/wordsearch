@@ -9,7 +9,7 @@ const Row = ({ size, row }) => {
   }
 
   return (
-    <div className='row'>
+    <div className='row' style={{'fontSize': 500/size}}>
       {boxes}
     </div>
   )
