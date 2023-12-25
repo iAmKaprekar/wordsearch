@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../client/assets')));
 
 app.use('/', express.static(path.resolve(__dirname, '../build')));
-app.use('/assets', express.static(path.resolve(__dirname, '../assets')));
+// app.use('/assets', express.static(path.resolve(__dirname, '../assets')));
 
 app.get('/', (req, res) => {
   return res.status(200).sendFile('../client/index.html');

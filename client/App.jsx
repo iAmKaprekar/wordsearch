@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { createRoot } from 'react-dom/client'
 import wordsearchGenerator from './wordsearch';
+import style from '../assets/style.css';
 
 // Components
 import OptionBar from './components/OptionBar';
