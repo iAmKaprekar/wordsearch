@@ -22,8 +22,6 @@ const WordBank = ({ words, options, setWords }) => {
     )
   }
 
-  console.log(words);
-
   return (
     <div id='wordBank'>
       {wordElements}

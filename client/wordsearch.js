@@ -2,7 +2,10 @@
 // Reversed words need to be filtered (i.e. ton & not)
 // Check for only one solution to each word
 
-const wordsearch = (words, difficulty = 0, size = 0) => {
+const wordsearch = (inputWords, difficulty = 0, size = 0) => {
+
+  // Slice the input words to stop breaking my state
+  const words = inputWords.slice();
 
   // Declare necessary variables
   let charSpace = 0;

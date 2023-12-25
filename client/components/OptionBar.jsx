@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import WordBank from "./WordBank";
 import wordsearchGenerator from '../wordsearch.js';
 
-const OptionBar = ({ setBoard }) => {
+const OptionBar = ({ setBoard, setWordBank }) => {
   const [newWords, setNewWords] = useState([]);
   const [newWordInput, setNewWordInput] = useState('');
   const [sizeInput, setSizeInput] = useState(12);
@@ -24,6 +24,16 @@ const OptionBar = ({ setBoard }) => {
   const newWordsearch = () => {
     const wordsearch = wordsearchGenerator(newWords, difficultyInput/100, sizeInput);
     setBoard(wordsearch.board);
+
+    const newWordBank = [];
+
+    for (let word in wordsearch.wordPlacements) {
+      newWordBank.push(word);
+    }
+
+    newWordBank.sort();
+
+    setWordBank(newWordBank);
   }
 
   return (
@@ -32,7 +42,7 @@ const OptionBar = ({ setBoard }) => {
       <input type='range' value={difficultyInput} onChange={(e) => setDifficultyInput(e.target.value)}></input>
       <p>Size</p>
       <input type='number' value={sizeInput} onChange={(e) => setSizeInput(e.target.value)}></input>
-      <p>Word Bank</p>
+      <p>Add to Word Bank</p>
       <input value={newWordInput} onKeyUp={submitWord} onChange={(e) => setNewWordInput(e.target.value)}></input>
       <button onClick={() => addNewWord(newWordInput)}>Add Word</button>
       <WordBank words={newWords} options={true} setWords={setNewWords}/>
@@ -41,4 +51,4 @@ const OptionBar = ({ setBoard }) => {
   )
 }
  
-export default OptionBar
+export default OptionBar;

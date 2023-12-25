@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   text-align: center;
   font-size: 36px;
   font-family: 'Lucida Console'
 }
 
 #mainBox {
-  margin-top: 0.5em;
   display: flex;
   flex-direction: column;
   border-style: solid;
@@ -30,6 +30,11 @@
   flex-direction: row;
   justify-content: space-around;
   width: 80%;
+}
+
+#game {
+  display: flex;
+  flex-direction: row;
 }
 
 .row {
@@ -71,6 +76,12 @@ button {
     width: 42px;
     height: 14px;
   }
+}
+
+#bankBar {
+  border-style: solid;
+  border-color: black;
+  padding: 10px
 }
 
 .bankEntry {
