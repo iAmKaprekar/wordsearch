@@ -2,8 +2,11 @@ import React from "react";
 
 const OptionBar = () => {
   return (
-    <div>
-      Option Bar
+    <div id='options'>
+      <input type='range'></input>
+      <input></input>
+      <input></input>
+      <button>Create New Wordsearch</button>
     </div>
   )
 }
