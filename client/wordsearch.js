@@ -7,6 +7,9 @@ const wordsearch = (inputWords, difficulty = 0, size = 0) => {
   // Slice the input words to maintain state for input
   const words = inputWords.slice();
 
+  // Error object for handing details about unusable results
+  const status = {error: false, rejectedWords: {}};
+
   // Declare necessary variables
   let charSpace = 0;
   const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -41,6 +44,9 @@ const wordsearch = (inputWords, difficulty = 0, size = 0) => {
   const wordBank = words.filter(word => {
     return word && word.length > 1;
   })
+
+  // Throw an error if passed no usable words
+  if (!wordBank.length) status.error = 'No valid words';
   
   // Determine necessary board size
   for (const word of wordBank) {
@@ -141,7 +147,8 @@ const wordsearch = (inputWords, difficulty = 0, size = 0) => {
   return {
     solutions: solutions,
     board: board,
-    wordPlacements: wordPlacements
+    wordPlacements: wordPlacements,
+    status: status,
   };
 }
 

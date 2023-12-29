@@ -25,17 +25,21 @@ const OptionBar = ({ color, setBoard, setWordBank }) => {
 
   const newWordsearch = () => {
     const wordsearch = wordsearchGenerator(newWords, difficultyInput/100, sizeInput);
-    setBoard(wordsearch.board);
 
-    const newWordBank = [];
+    console.log(wordsearch)
+    if (!wordsearch.status.error) {
+      setBoard(wordsearch.board);
 
-    for (let word in wordsearch.wordPlacements) {
-      newWordBank.push(word);
+      const newWordBank = [];
+
+      for (let word in wordsearch.wordPlacements) {
+        newWordBank.push(word);
+      }
+
+      newWordBank.sort();
+
+      setWordBank(newWordBank);
     }
-
-    newWordBank.sort();
-
-    setWordBank(newWordBank);
   }
 
   return (

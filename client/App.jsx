@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { createRoot } from 'react-dom/client'
 import wordsearchGenerator from './wordsearch';
-import style from '../assets/style.css';
+import _style from '../assets/style.css';
 
 // Components
 import OptionBar from './components/OptionBar';
@@ -25,11 +25,11 @@ const App = () => {
     setWordBank(initialWordBank);
     setBoard(wordsearch.board);
 
-    const date = new Date();
-    const month = date.getMonth() - 7;
-    const dayNum = date.getDate() - 20;
-  
-    const hue = 30 * -month - dayNum;
+    // Color is based off time/date -- will be used for Aleph Null/Animacosm
+    const yuletideOffset = 30713700000;
+    const yearInterval = 31556925994;
+    const date = Date.now();
+    const hue = 240 - 360 * (date - yuletideOffset) / yearInterval;
 
     setColor(`hsl(${hue}, 80%, 80%)`);
 
