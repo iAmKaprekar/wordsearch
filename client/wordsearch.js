@@ -4,7 +4,7 @@
 
 const wordsearch = (inputWords, difficulty = 0, size = 0) => {
 
-  // Slice the input words to stop breaking my state
+  // Slice the input words to maintain state for input
   const words = inputWords.slice();
 
   // Declare necessary variables
@@ -15,17 +15,25 @@ const wordsearch = (inputWords, difficulty = 0, size = 0) => {
   // Input sanitization: remove non-words, set to lowercase
   for (let i = 0; i < words.length; i++) {
     if (typeof words[i] !== 'string') words[i] = null;
-    else words[i] = words[i].toUpperCase();
+    else words[i] = words[i].toUpperCase().replace(/\s/g, '');
     for (let char of words[i]) {
       if (!validCharSet.has(char)) words[i] = null;
     }
   }
   
   // Input sanitization: remove repeat instances of words
+  const reversedWords = words.map(word => word?.split('').reverse().join('') || null);
+
   for (let i = 0; i < words.length; i++) {
     for (let j = i + 1; j < words.length; j++) {
-      if (words[i]?.includes(words[j])) words[j] = null;
-      if (words[j]?.includes(words[i])) words[i] = null;
+      if (words[i]?.includes(words[j]) || reversedWords[i]?.includes(words[j])) {
+        words[j] = null;
+        reversedWords[j] = null;
+      }
+      if (words[j]?.includes(words[i]) || reversedWords[j]?.includes(words[i])) {
+        words[i] = null;
+        reversedWords[i] = null;
+      }
     }
   }
   
