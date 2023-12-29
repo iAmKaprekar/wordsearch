@@ -30,10 +30,6 @@ const App = () => {
     const dayNum = date.getDate() - 20;
   
     const hue = 30 * -month - dayNum;
-  
-    console.log('Month:', month);
-    console.log('Day:', dayNum);
-    console.log('Hue:', hue);
 
     setColor(`hsl(${hue}, 80%, 80%)`);
 

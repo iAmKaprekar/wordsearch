@@ -39,7 +39,7 @@ const OptionBar = ({ color, setBoard, setWordBank }) => {
   }
 
   return (
-    <div id='options' style={{'background-color': color}}>
+    <div id='options' style={{'backgroundColor': color}}>
       <p>Difficulty</p>
       <input type='range' value={difficultyInput} onChange={(e) => setDifficultyInput(e.target.value)}></input>
       <p>Size</p>
